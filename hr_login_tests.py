@@ -11,12 +11,14 @@ class TestLogin:
 
     @pytest.fixture
     def setup(self, pytestconfig):
+	print('SETUP')
         browser_name = pytestconfig.getoption("browser_name")
         print('Browser ', browser_name)
         self.login_page = LoginPage()
         self.browser = self.login_page.get_driver_instance(browser_name)
 
     def teardown_class(self):
+	print('teardown')
         self.browser.quit()
 
     def test_login(self, setup):
